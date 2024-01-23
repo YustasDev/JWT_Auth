@@ -20,6 +20,14 @@ jasypt:
     password: ${ENCRYPTION_PASSWORD}
     iv-generator-classname: org.jasypt.iv.NoIvGenerator
 
+customers:
+  user1:
+    login: ENC(DDJryexpgLxEsgb6EF9iMQ==)
+    password: ENC(kiSjYIA+ELHCsENErp0BQA==)
+  admin:
+    login: ENC(tGFhBaGb3WTBtMJ2TAqTmg==)
+    password: ENC(gR0QXkHP2Li93QQyUsofMg==)
+
 #
 #spring:
 #  datasource:
