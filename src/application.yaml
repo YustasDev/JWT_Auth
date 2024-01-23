@@ -1,0 +1,49 @@
+# example values
+
+server:
+  port: 8080
+  ssl:
+    keyStoreType: PKCS12
+    key-store: /home/progforce/JWT_Auth/src/main/resources/keystore/certificateMS.p12
+    key-store-password: ENC(BVN7v6x+lYVu1GyR3ymw5w==)
+
+# https://www.springcloud.io/post/2022-04/spring-samesite/#gsc.tab=0
+  servlet:
+    session:
+      cookie:
+        same-site: None
+        secure: true
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    password: ${ENCRYPTION_PASSWORD}
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+#
+#spring:
+#  datasource:
+#    username: root
+#    password: ENC(w7qYbKTj2l8T6ozrMwNQYpvJbVSQjUzG)
+#    #password: password
+#    #url: jdbc:mysql://localhost:3306/medical_service?serverTimezone=Europe/Moscow
+#    url: jdbc:mysql://localhost:3306/secure_fromDB?useSSL=false&serverTimezone=Europe/Moscow
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#
+#    defer-datasource-initialization: true
+#  sql:
+#    init:
+#      mode: always
+#
+#  main:
+#    allow-circular-references: true
+#
+#
+#
+#
