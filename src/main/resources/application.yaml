@@ -1,0 +1,35 @@
+# example values
+
+server:
+  port: 8080
+  ssl:
+    keyStoreType: PKCS12
+    key-store: /home/progforce/JWT_Auth/src/main/resources/keystore/certificateMS.p12
+    key-store-password: ENC(Xey7zT4RROISxdaU89Hb9w==)
+
+# https://www.springcloud.io/post/2022-04/spring-samesite/#gsc.tab=0
+#  servlet:
+#    session:
+#      cookie:
+#        same-site: None
+#        secure: true
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    password: ${ENCRYPTION_PASSWORD}
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+customers:
+  user1:
+    login: ENC(DDJryexpgLxEsgb6EF9iMQ==)
+    password: ENC(kiSjYIA+ELHCsENErp0BQA==)
+  admin:
+    login: ENC(tGFhBaGb3WTBtMJ2TAqTmg==)
+    password: ENC(gR0QXkHP2Li93QQyUsofMg==)
+
+
+jwt:
+  secret:
+    access: Z15YZcauPmasccitodAqIMDfIHmwjhYR6ps+f5/Kz4NRSnFNdCftl7d2whawoVyPkBnC/3T1rsFhDxlKM1Ueew==
+    refresh: pA6pQdKkeu0cOQovywM+mwLuE6G5IseWiUCvHSu4KWpaBR0iSyHQpluJ6gsPRCmgK/GaVgxplAwCg8LRYdF8cg==

@@ -1,6 +1,8 @@
 package com.example.jwt_auth.controllers;
 
 
+import com.example.jwt_auth.domain.JwtAuthentication;
+import com.example.jwt_auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,9 +32,3 @@ public class DefaultController {
         }
 
     }
-
-
-
-
-
-}
