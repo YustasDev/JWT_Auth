@@ -25,7 +25,7 @@ public class UserService {
     private String admin_login;
     private String admin_password;
 
-    public UserService(@Value("${customers.user1.login}") String user1_login, @Value("customers.user1.password") String user1_password,
+    public UserService(@Value("${customers.user1.login}") String user1_login, @Value("${customers.user1.password}") String user1_password,
                        @Value("${customers.admin.login}") String admin_login, @Value("${customers.admin.password}") String admin_password) {
 
         this.users = Collections.unmodifiableList(Arrays.asList(
