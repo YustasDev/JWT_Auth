@@ -3,6 +3,7 @@ package com.example.jwt_auth.service;
 
 import com.example.jwt_auth.domain.Role;
 import com.example.jwt_auth.domain.User;
+import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 
 @Service
+@Data
 public class UserService {
 
     private final List<User> users;
