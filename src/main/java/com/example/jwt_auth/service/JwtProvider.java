@@ -25,16 +25,22 @@ public class JwtProvider {
 
     private final SecretKey jwtAccessSecret;
     private final SecretKey jwtRefreshSecret;
+    private long accessTokenDuration;
+    private long refreshTokenDuration;
 
     public JwtProvider(@Value("${jwt.secret.access}") String jwtAccessSecret,
-                       @Value("${jwt.secret.refresh}") String jwtRefreshSecret) {
+                       @Value("${jwt.secret.refresh}") String jwtRefreshSecret,
+                       @Value("${jwt.secret.access.duration}") long accessTokenDuration,
+                       @Value("${jwt.secret.refresh.duration}") long refreshTokenDuration) {
         this.jwtAccessSecret = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtAccessSecret));
         this.jwtRefreshSecret = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtRefreshSecret));
+        this.accessTokenDuration = accessTokenDuration;
+        this.refreshTokenDuration = refreshTokenDuration;
     }
 
     public String generateAccessToken(@NonNull User user) {
         final LocalDateTime now = LocalDateTime.now();
-        final Instant accessExpirationInstant = now.plusDays(2).atZone(ZoneId.systemDefault()).toInstant();
+        final Instant accessExpirationInstant = now.plusHours(accessTokenDuration).atZone(ZoneId.systemDefault()).toInstant();
         final Date accessExpiration = Date.from(accessExpirationInstant);
         return Jwts.builder()
                 .setSubject(user.getLogin())
@@ -47,7 +53,7 @@ public class JwtProvider {
 
     public String generateRefreshToken(@NonNull User user) {
         final LocalDateTime now = LocalDateTime.now();
-        final Instant refreshExpirationInstant = now.plusDays(30).atZone(ZoneId.systemDefault()).toInstant();
+        final Instant refreshExpirationInstant = now.plusDays(refreshTokenDuration).atZone(ZoneId.systemDefault()).toInstant();
         final Date refreshExpiration = Date.from(refreshExpirationInstant);
         return Jwts.builder()
                 .setSubject(user.getLogin())

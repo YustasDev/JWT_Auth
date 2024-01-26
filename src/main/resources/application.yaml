@@ -1,4 +1,4 @@
-# example values
+
 
 server:
   port: 8080
@@ -31,5 +31,12 @@ customers:
 
 jwt:
   secret:
-    access: Z15YZcauPmasccitodAqIMDfIHmwjhYR6ps+f5/Kz4NRSnFNdCftl7d2whawoVyPkBnC/3T1rsFhDxlKM1Ueew==
-    refresh: pA6pQdKkeu0cOQovywM+mwLuE6G5IseWiUCvHSu4KWpaBR0iSyHQpluJ6gsPRCmgK/GaVgxplAwCg8LRYdF8cg==
+    access: ENC(W5B94RR5acAbvv0AYvbp1Mt4yp9yDHxI9F+Vny7kqDiijH7t+vC/aW94Y4UF2nn0PBz48+oEqNEIL61OjMKqvgCV6eiyw4jzc3qQYXJPVlKeRiX+MRfDMcmzmuuM9hlfZcYBTIRMqRc=)
+    refresh: ENC(/sR5/uysXDggx4FR+Hb1ClEHANnbGjkJi1WEqW0n7hCVUhR5pVw4DJME664GUKbdoLe+Ock/i0JP73mxCd9MOp2xSCAxjHCqyxus4LE8oqW5rPZ5k7q4+XYbIeC/6ylodA48KmvUhEg=)
+
+jwt.secret.access.duration: 8  # in hour
+jwt.secret.refresh.duration: 30  # in days
+
+capacity.requests: 3 # requests per minute
+
+
