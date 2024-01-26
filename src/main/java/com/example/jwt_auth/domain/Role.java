@@ -10,10 +10,10 @@ public enum Role implements GrantedAuthority {
     ADMIN("ADMIN"),
     USER("USER");
 
-    private final String variable;
+    private final String vale;
 
     @Override
     public String getAuthority() {
-        return variable;
+        return vale;
     }
 }

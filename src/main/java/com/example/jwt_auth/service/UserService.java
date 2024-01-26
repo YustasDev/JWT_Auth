@@ -3,11 +3,8 @@ package com.example.jwt_auth.service;
 
 import com.example.jwt_auth.domain.Role;
 import com.example.jwt_auth.domain.User;
-import lombok.Data;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -18,14 +15,9 @@ import java.util.Optional;
 
 
 @Service
-@Data
 public class UserService {
 
     private final List<User> users;
-    private String user1_login;
-    private String user1_password;
-    private String admin_login;
-    private String admin_password;
 
     public UserService(@Value("${customers.user1.login}") String user1_login, @Value("${customers.user1.password}") String user1_password,
                        @Value("${customers.admin.login}") String admin_login, @Value("${customers.admin.password}") String admin_password) {
