@@ -34,7 +34,7 @@ public class DefaultController {
                 .build();
     }
 
-    @PreAuthorize("hasAuthority('USER')")
+        @PreAuthorize("hasAuthority('USER')")
         @GetMapping("hello/user")
         public ResponseEntity<String> helloUser() {
             final JwtAuthentication authInfo = authService.getAuthInfo();

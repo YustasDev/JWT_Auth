@@ -5,13 +5,12 @@ import com.example.jwt_auth.domain.JwtAuthentication;
 import com.example.jwt_auth.domain.JwtRequest;
 import com.example.jwt_auth.domain.JwtResponse;
 import com.example.jwt_auth.domain.User;
+import com.example.jwt_auth.exception.AuthException;
 import io.jsonwebtoken.Claims;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
-import javax.security.auth.message.AuthException;
 import java.util.HashMap;
 import java.util.Map;
 
