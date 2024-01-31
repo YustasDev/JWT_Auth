@@ -15,7 +15,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import java.net.URI;
 import java.time.Duration;
 
 @RestController
@@ -27,6 +29,9 @@ public class DefaultController {
     @Autowired
     private AuthService authService;
 
+    @Autowired
+    private WebClient.Builder webClientBuilder;
+
     public DefaultController(@Value("${capacity.requests}") long capacity) {
         Bandwidth limit = Bandwidth.classic(capacity, Refill.greedy(capacity, Duration.ofMinutes(1)));
         this.bucket = Bucket.builder()
@@ -37,8 +42,22 @@ public class DefaultController {
         @PreAuthorize("hasAuthority('USER')")
         @GetMapping("hello/user")
         public ResponseEntity<String> helloUser() {
-            final JwtAuthentication authInfo = authService.getAuthInfo();
-            return ResponseEntity.ok("Hello user " + authInfo.getPrincipal() + "!");
+
+
+        URI baseUri = URI.create("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,solana,matic-network&vs_currencies=usd");
+
+        String answer =  webClientBuilder.build()
+                .get()
+                .uri(baseUri)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+
+        return ResponseEntity.ok(answer);
+
+
+//            final JwtAuthentication authInfo = authService.getAuthInfo();
+//            return ResponseEntity.ok("Hello user " + authInfo.getPrincipal() + "!");
         }
 
         @PreAuthorize("hasAuthority('ADMIN')")
